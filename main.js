@@ -9,8 +9,11 @@ function printToDom(stringToPrint, divId){
 
 var players = [{ name: "Bob", scores: [10, 65] }, 
             { name: "Bill", scores: [90, 5] }, 
-            { name: "Charlie", scores: [40, 55] }
-        ]; // Displays "Bill"
+            { name: "Charlie", scores: [40, 55]}]
+         // Displays "Bill"
+
+var maxTotal = 0;
+var winner; 
 
 for (var i =0; i < players.length; i++){
     //sum of scores
@@ -18,14 +21,14 @@ for (var i =0; i < players.length; i++){
     for (var j=0; j < players[i].scores.length; j++){
         players[i].total += players[i].scores[j];
     }
-     
-        //console.log('player: ', players[i].name)
+    if(players[i].total <= 100 && players[i].total > maxTotal){
+        var maxTotal = players[i].total;
+        var winner= players[i].name;
     }
-    for (var totals = 0; totals < players.length; totals++){
-        var maxTotal;
-        if(platyers[totals].total<=100){
-            
-        }
-    }
-    //console.log("total: ", players[i].total)
 }
+
+if( maxTotal === 0){
+    winner = false;
+}
+
+document.getElementById("challenge1").innerHTML = "<h3> Challenge 1: " + winner + "</h3>"
